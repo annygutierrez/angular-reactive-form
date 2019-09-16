@@ -47,8 +47,20 @@ export class AppComponent implements OnInit {
     });
   }
 
+  formInitialized(name: string, form: FormGroup) {
+    console.log(form);
+    this.signupForm.patchValue({
+      [name]: form
+    });
+    console.log(this.signupForm);
+  }
+
   get controls() {
     return (this.signupForm.get('hobbies') as FormArray).controls;
+  }
+
+  get credential() {
+    return (this.signupForm.get('credential') as FormGroup);
   }
 
   valueIsObject(item) {

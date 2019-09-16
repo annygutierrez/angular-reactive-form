@@ -29,21 +29,21 @@
             <input type="text" class="form-control" [formControlName]="i">
           </div>
         </div>
-
-        <div formGroupName="credential">
+        <dynamicform-root *ngIf="credential" [credential]="credential" (formReady)="formInitialized('credential', $event)" ></dynamicform-root>
+        <!-- <div formGroupName="credential">
             <div class="form-group" *ngFor="let key of credentialKeys()">
               <div *ngIf="!valueIsObject(key)">
                 <label [for]="key">{{key}}</label>
                 <input type="text" [formControlName]="key" class="form-control">
               </div>
               <div *ngIf="valueIsObject(key)">
-                <fieldset *ngFor="let itemKey of itemKeys(key)" [formGroupName]="key" class="form-group" >
+                <div *ngFor="let itemKey of itemKeys(key)" [formGroupName]="key" class="form-group" >
                     <label [for]="itemKey">{{itemKey}}</label>
                   <input type="text" [formControlName]="itemKey" class="form-control">
-                </fieldset>
+                </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
         <span class="help-block" *ngIf="!signupForm.valid && signupForm.touched">Please enter a valid data!</span>
         <button class="btn btn-primary" type="submit">Submit</button>

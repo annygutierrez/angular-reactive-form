@@ -1,0 +1,16 @@
+<div [formGroup]="dynamicForm">
+    <div class="form-group" *ngFor="let key of credentialKeys()">
+      <div *ngIf="!valueIsObject(key)">
+        <label [for]="key">{{key}}</label>
+        <input type="text" [formControlName]="key" class="form-control">
+      </div>
+      <div *ngIf="valueIsObject(key)">
+        <div *ngFor="let itemKey of itemKeys(key)" [formGroupName]="key" class="form-group" >
+            <label [for]="itemKey">{{itemKey}}</label>
+          <input type="text" [formControlName]="itemKey" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
